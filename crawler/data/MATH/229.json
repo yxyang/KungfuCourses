@@ -1,0 +1,1 @@
+{"depart": "Mathematics", "name": "Theory of Models", "prereq": ["Mathematics 225B"], "number": "229", "units": "4", "descrp": "Syntactical characterization of classes closed under algebraic operations. Ultraproducts and ultralimits, saturated models. Methods for establishing decidability and completeness. Model theory of various languages richer than first-order."}

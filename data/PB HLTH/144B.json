@@ -1,0 +1,1 @@
+{"depart": "Public Health", "name": "Intermediate SAS Programming", "prereq": ["Public Health 144A"], "number": "144B", "units": "2", "descrp": "Topics include data step flow control, looping and automated processing, implicit and explicit arrays, data simulation strategies, data set reconfiguration, use of SAS Macro variables, and writing simple SAS Macro programs."}

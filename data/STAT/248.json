@@ -1,0 +1,1 @@
+{"depart": "Statistics", "name": "Analysis of Time Series", "prereq": ["Statistics 102"], "number": "248", "units": "4", "descrp": "Frequency-based techniques of time series analysis, spectral theory, linear filters, estimation of spectra, estimation of transfer functions, design, system identification, vector-valued stationary processes, model building."}

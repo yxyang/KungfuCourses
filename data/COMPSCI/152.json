@@ -1,0 +1,1 @@
+{"depart": "Computer Science", "name": "Computer Architecture and Engineering", "prereq": ["Computer Science 61C"], "number": "152", "units": "4", "descrp": "Instruction set architecture, microcoding, pipelining (simple and complex). Memory hierarchies and virtual memory. Processor parallelism: VLIW, vectors, multithreading. Multiprocessors."}
