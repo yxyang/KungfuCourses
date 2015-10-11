@@ -1,0 +1,147 @@
+<!DOCTYPE html> 
+<html>
+<head>
+   <meta charset="UTF-8">
+   <title>Kungfu Courses Home Page</title>
+   <link rel="stylesheet" href="jquery-ui.css">
+   <script src="jquery-2.1.0.min.js"></script>
+   <script src="cytoscape-2.1.0.min.js"></script>
+   <script src="jquery-ui.js"></script>
+   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+   <script src="dagre-d3.js"></script>
+   <script src="demo.js"></script>
+   <style>
+      .node circle {
+         stroke: #d83c3c;
+         fill: #ffffff;
+      }
+      .edgePath {
+         stroke: #d83c3c;
+         fill: #fff;
+         stroke-width: 1.5px;
+      }
+      div#container {
+        height: 700px;
+        width: 80%;
+        /*border:2px solid #000;*/
+        overflow: scroll;
+     /*   position: absolute;
+    top:400px;
+    bottom: 0;
+    left: 0;
+    right: 0;*/
+
+    margin: auto;
+      }
+svg#sky {
+  height: 1500px;
+  width: 200%;
+  /*border:1px dotted #ccc;*/
+  /*background-color: #ccc;*/
+}
+   </style>
+   <link rel="stylesheet" type="text/css" href="demo.css" media="screen" />
+   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+   <link rel="stylesheet" href="css/input.css">
+</head>
+
+
+<body>
+
+<!-- <div class="header">
+    <div class="home-menu pure-menu pure-menu-horizontal">
+        <a class="pure-menu-heading" href="">Kungfu Courses</a>
+
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Login</a></li>
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Contact Us</a></li>
+        </ul>
+    </div>
+</div> -->
+<div class="pure-menu pure-menu-horizontal" id="menu-bar">
+        <a class="pure-menu-heading" href=""><font color="#FFFFFF">KUNGFU COURSES</font></a>
+        <ul class="pure-menu-list my-custom-list">
+            <li class="pure-menu-item"><a href="#"
+                a href="#" class="pure-menu-link"><font color="#FFFFFF">Log in</font></a></li>
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link"><font color="#FFFFFF">Contact Us</font></a></li>
+        </ul>
+</div>
+
+
+<script type="text/javascript">
+   $(function() {
+      var availableTutorials = [];
+      $.ajax({
+        url: "http://10.0.0.46:3015/allmajors",
+        dataType: "jsonp",
+        success: function( data ) {
+          for (var i in data) {
+            availableTutorials.push(data[i])
+          }
+        }
+      });
+
+      $("#major").autocomplete({
+         source: availableTutorials
+      });
+   });
+
+   // $("#target").submit(function(event) {
+   //    event.preventDefault():
+   //    console.log($("#major").text);
+   //    fetchData($("major"))
+   // });
+$(function() {
+   $("#ok").click( function(event)
+        {
+          fetchData($("#major").val());
+          event.preventDefault();
+        }
+   );
+});
+
+$(function () {
+   var container = d3.select('body').append('div')
+    .attr('id','container')
+;
+
+// svg#sky
+var sky = container.append('svg')
+    .attr('height', 100)
+    .attr('width', 100)
+    .attr('id', 'sky')
+;
+sky.append("g");
+});
+
+
+
+
+
+
+
+</script>
+<center>
+<form class="form-wrapper cf" id="target">
+<div class="ui-widget">
+   <label for="major"></label>
+   <input id="major" placeholder="Search here..." required>
+   <button type="submit" id="ok">Search</button>
+
+</div>
+</form>
+</center>
+
+<!-- <div id="container">
+<svg><g/></svg>
+</div> -->
+
+
+
+
+
+
+
+
+</body>
+</html>
