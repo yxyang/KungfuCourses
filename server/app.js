@@ -5,7 +5,9 @@ var express = require('express'),
 
 app.use(bodyParser.json({"limit": "20mb"}));
 
-app.get('/major/:majorName', routes.getCourseByMajor);
+app.get('/major', routes.getCourseByMajor);
+
+app.get('/allMajors', routes.getAllMajors);
 
 app.get('/course/:courseName', routes.getCourseDetail);
 

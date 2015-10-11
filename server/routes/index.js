@@ -1,4 +1,5 @@
 module.exports = {
 	getCourseByMajor: require('./getCourseByMajor'),
-	getCourseDetail: require('./getCourseDetail')
+	getCourseDetail: require('./getCourseDetail'),
+	getAllMajors: require('./getAllMajors')
 };

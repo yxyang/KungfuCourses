@@ -8,5 +8,5 @@ var findCourseDetail = function(name) {
 
 module.exports = function(req, res, next) {
 	var courseName = req.courseName;
-	res.json(findCourseDetail(courseName));
+	res.jsonp(findCourseDetail(courseName));
 }
