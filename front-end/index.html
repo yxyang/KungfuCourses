@@ -72,11 +72,12 @@ svg#sky {
    $(function() {
       var availableTutorials = [];
       $.ajax({
-        url: "http://10.0.0.46:3015/allmajors",
+        url: "http://ec2-52-24-8-168.us-west-2.compute.amazonaws.com:3015/allmajors",
         dataType: "jsonp",
         success: function( data ) {
           for (var i in data) {
-            availableTutorials.push(data[i])
+            availableTutorials.push(data[i]);
+            // console.log(availableTutorials[i]);
           }
         }
       });

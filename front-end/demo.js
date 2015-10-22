@@ -106,7 +106,7 @@ freshLayout = function(){
 fetchData = function(name) {
 
   $.ajax({
-    url: "http://localhost/major?name=" + name,
+    url: "http://ec2-52-24-8-168.us-west-2.compute.amazonaws.com:3015/major?name=" + name,
     dataType: "jsonp",
     success: function (data) {
       console.log("fetched data from server");
@@ -164,7 +164,7 @@ fetchData = function(name) {
 
 loadMajors = function() {
       $.ajax({
-        url: "http://localhost:3015/allmajors",
+        url: "http://ec2-52-24-8-168.us-west-2.compute.amazonaws.com/allmajors",
         dataType: "jsonp",
         success: function( data ) {
           for (var i in data) {
