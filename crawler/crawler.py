@@ -9,10 +9,11 @@ import getopt
 
 from bs4 import BeautifulSoup
 
-root_urls = {"schedulebuilder":"https://schedulebuilder.berkeley.edu/explore/courses/SP/2016/"}
+root_urls = {"schedulebuilder":"https://schedulebuilder.berkeley.edu/explore/courses/SP/2016/",
+						 "berkeleytime": "https://www.berkeleytime.com/grades/"}
 
 ##############################################################################
-# THIS PARSER IS NOT PERFECT; FRONT END MIGHT NEED TO PERFORM ERROR CHECKING #
+# THIS PARSER IS NOT PERFECT; BACKEND MIGHT NEED TO PERFORM ERROR CHECKING #
 ##############################################################################
 def parse_prereq(department, number, string):
 	# Deal with or and and 
@@ -102,6 +103,7 @@ class CourseSpider(Spider):
 						elif item[0] == "Prerequisites":
 							result['prereq'] = parse_prereq(result['depart'], result['number'], item[1])
 							print(result['prereq'])
+					# Crawl grade distribution
 					i += 1
 				except:
 					i += 1
@@ -132,6 +134,68 @@ class CourseSpider(Spider):
 				print("Error writing: "+str(course))
 				continue
 
+
+class GradeSpider(Spider):
+	def __init__(self):
+		# self.headers['Host'] = 'www.berkeleytime.com'
+		# self.headers['Accept'] = 'application/json'
+		self.url = root_urls['berkeleytime']
+		self.course_map = {}
+
+	def pre_crawl(self):
+		url = self.url
+		request = urllib2.Request(url, headers = self.headers)
+		html = urllib2.urlopen(request).read()
+		soup = BeautifulSoup(html)
+		for option in soup.find_all("option"):
+			try:
+				self.course_map[option['data-title']] = option['value']
+			except:
+				pass
+
+	def crawl(self):
+		self.pre_crawl()
+		for course in self.course_map:
+			result = {}
+			request = urllib2.Request(self.url+"course_grades/%s"%self.course_map[course], headers = self.headers)
+			response = urllib2.urlopen(request)
+			data = json.load(response)
+			try:
+				section_id = data[0][u'grade_id']
+				request = urllib2.Request(self.url+"sections/%d"%section_id, headers = self.headers)
+				response = urllib2.urlopen(request)
+				yield json.load(response)
+			except:
+				print("Error loading" + str(data))
+				pass
+
+	def save(self):
+		for course in self.crawl():
+			# try:
+			# 	depart_trim = self.depart_map[course['depart']]
+			# 	filename = "./data/"+depart_trim+"/"+course['number']+".json"
+			# 	if not os.path.exists(os.path.dirname(filename)):
+			# 		os.makedirs(os.path.dirname(filename))
+			# 	with open(filename, "w+") as outfile:
+			# 		print("Writing: "+filename)
+			# 		json.dump(course, outfile)
+			# except:
+			# 	print("Error writing: "+str(course))
+			# 	continue
+			curr_course = course[u'title'].split(" ")
+			course_num = curr_course[len(curr_course)-1]
+			course_dept = " ".join(curr_course[:len(curr_course)-1])
+			try:
+				filename = "./data/"+course_dept+"/"+course_num+"_grade.json"
+				if not os.path.exists(os.path.dirname(filename)):
+					os.makedirs(os.path.dirname(filename))
+				with open(filename, "w+") as outfile:
+					print("Writing: "+filename)
+					json.dump(course, outfile)
+			except:
+				print("Error writing: "+str(course))
+				continue
+
 def main():
     # parse command line options
     args = sys.argv[1:]
@@ -146,10 +210,11 @@ def main():
     spider = CourseSpider(int(args[0]))
     spider.save()
 
+GradeSpider().save()
 
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
 
 # print(parse_prereq("Computer Science", "186", "61B and 61C."))
 				

@@ -1,1 +1,0 @@
-{"depart": "Electrical Engineering", "name": "Information Theory and Coding", "prereq": ["Electrical Engineering 226", "Statistics  200A"], "number": "229A", "units": "3", "descrp": "Fundamental bounds of Shannon theory and their application. Source and channel coding theorems. Galois field theory, algebraic error-correction codes. Private and public-key cryptographic systems."}

@@ -1,0 +1,105 @@
+/* CSS - Cascading Style Sheet */
+/* Palette color codes */
+/* Palette URL: http://paletton.com/#uid=13C0c0k++GIvdZKSW+V+Wt1+bmH */
+
+/* Feel free to copy&paste color codes to your application */
+
+
+/* As hex codes */
+
+.color-primary-0 { color: #005BC7 } /* Main Primary color */
+.color-primary-1 { color: #1A81FC }
+.color-primary-2 { color: #0577FF }
+.color-primary-3 { color: #004597 }
+.color-primary-4 { color: #003676 }
+
+
+#menu-bar {
+  background-color: #d83c3c;
+}
+
+#cy {
+  height: 600px;
+  width: 800px;
+  float: center;
+  position: relative;
+  top: 5px;
+  left: 200px;
+  border: 1px solid #aaa;
+  border-radius:5px;
+  -webkit-border-radius:5px;
+  padding: 0px;
+  display: block;
+  z-index: 1;
+  overflow:scroll; 
+  }
+
+#major-input {
+  position: relative;
+  float: top;
+  top: 15px;
+}  
+
+#wrap-content {
+  background-color: #005BC7
+}
+
+.customButtons{
+  font-family: Verdana, Arial, Times New Roman;
+  font-size:18px;
+  }
+
+#toolbar {
+   padding: 4px;
+   width: 50%;
+   text-align: center;
+  }
+
+.ui-autocomplete { max-height: 45%; overflow-y: scroll; overflow-x: hidden; }
+
+#grade-dist {
+  border-radius: 2px;
+  width: 250px;
+  height: 180px;
+  overflow: scroll;
+}
+
+#course-descrp {
+  width: 250px;
+  height: 120px;
+  overflow: scroll;
+}
+
+
+.rating-number {
+  display: inline-block;
+  padding: 0.25em;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 0.3em;
+  -webkit-border-radius: 0.3em;
+  -moz-border-radius: 0.3em;
+  font-weight: bold;
+  min-width: 1.2em;
+  text-align: center;
+  cursor: default;
+  margin: 0.25em;
+}
+
+.rating-high {background-color: #8ae234; color: #000; border-color: #75ae39;}
+.rating-mid {background-color: #ffa824; color: #000; border-color: #bc822b;}
+.rating-low {background-color: #ff3d3d; color: #000; border-color: #9d4444;}
+.rating-unknown {background-color: #eee; color: #000; border-color: #000;}
+
+
+
+#no-data:before {
+  width: 130px;
+  height: 1px;
+  position: relative;
+  margin: 0 auto;
+  top: 31px;
+  content: '';
+  display: block;
+  background: -moz-radial-gradient(center, ellipse cover, rgba(111, 25, 25, 0.65) 0%, rgba(75, 38, 38, 0) 70%, rgba(60, 44, 44, 0) 100%);
+}

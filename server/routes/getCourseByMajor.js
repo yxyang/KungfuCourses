@@ -40,16 +40,12 @@ var findCourseByMajor = function(major, callback) {
 
 				temp = '../data/' + courseMap[dept] + '/' + num + '.json';
 				toPush = temp;
-				//console.log(dept);
-				//console.log(num);
-				//console.log(temp);	
 
 				try {
 					var tt = require(temp);
 				} catch (e) {
 					toPush = null;
 				}
-				//console.log(toPush);
 
 				if (toPush != null) {
 					edges.push([preReqs[j], courses[i]]);
@@ -77,9 +73,11 @@ var findCourseByMajor = function(major, callback) {
 			i++;
 		}
 
+
+		// Modify courses name and add course detail
 		var ansCourses = [];
 		var ansEdges = [];
-		//console.log(edges);
+
 		for (var i in courses) {
 			if (map[courses[i]]) {
 				courses[i] = courses[i].replace('  ', ' ');
@@ -88,8 +86,7 @@ var findCourseByMajor = function(major, callback) {
 				currCourse.splice(currCourse.length - 1, 1);
 				if (currCourse.length === 1) {
 					var courseDept = currCourse.join(' ');
-					console.log(courseDept);
-					courseDept = courseMap[courseDept].slice(0, 3)
+					courseDept = courseMap[courseDept].slice(0, 4)
 				} else {
 					currCourse = currCourse.map(function(str) {
 						var new_str = str.slice(0,1);
@@ -100,7 +97,15 @@ var findCourseByMajor = function(major, callback) {
 					})
 					var courseDept = currCourse.join('');
 				}
-				ansCourses.push(courseDept + ' ' + courseNum);
+
+				var courseDeptAbbr = courseMap[courses[i].match("[a-zA-Z]+(\\s*[a-zA-Z]+)*\\s")[0].trim()]
+				ansCourses.push({
+					'name': courseDept + ' ' + courseNum,
+					'raw_name': courseDeptAbbr + ' ' + courseNum,
+					'title': require(files[i]).name,
+					'units': require(files[i]).units,
+					'descrp': require(files[i]).descrp,
+				});
 			}
 
 		}
@@ -113,7 +118,7 @@ var findCourseByMajor = function(major, callback) {
 			currCourse.splice(currCourse.length - 1, 1);
 			if (currCourse.length === 1) {
 				var courseDept1 = currCourse.join(' ');
-				courseDept1 = courseMap[courseDept1].slice(0, 3)
+				courseDept1 = courseMap[courseDept1].slice(0, 4)
 			} else {
 				currCourse = currCourse.map(function(str) {
 					var new_str = str.slice(0,1);
@@ -124,7 +129,6 @@ var findCourseByMajor = function(major, callback) {
 				})
 				var courseDept1 = currCourse.join('');
 			}
-			//var courseDept1 = currCourse.join(' ');
 
 			edges[i][1] = edges[i][1].replace('  ', ' ');
 			currCourse = edges[i][1].split(' ');
@@ -132,7 +136,7 @@ var findCourseByMajor = function(major, callback) {
 			currCourse.splice(currCourse.length - 1, 1);
 			if (currCourse.length === 1) {
 				var courseDept2 = currCourse.join(' ');
-				courseDept2 = courseMap[courseDept2].slice(0, 3)
+				courseDept2 = courseMap[courseDept2].slice(0, 4)
 			} else {
 				currCourse = currCourse.map(function(str) {
 					var new_str = str.slice(0,1);
@@ -143,7 +147,6 @@ var findCourseByMajor = function(major, callback) {
 				})
 				var courseDept2 = currCourse.join('');
 			}
-			//var courseDept2 = currCourse.join(' ');
 
 			ansEdges.push([
 				courseDept1 + ' ' + courseNum1,

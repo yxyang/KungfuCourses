@@ -1,1 +1,0 @@
-{"depart": "Mathematics", "name": "Numerical Analysis", "prereq": ["Mathematics 110", "Mathematics 128A"], "number": "128B", "units": "4", "descrp": "Iterative solution of systems of nonlinear equations, evaluation of eigenvalues and eigenvectors of matrices, applications to simple partial differential equations. Practice on the computer."}

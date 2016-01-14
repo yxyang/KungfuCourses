@@ -9,7 +9,7 @@ app.get('/major', routes.getCourseByMajor);
 
 app.get('/allMajors', routes.getAllMajors);
 
-app.get('/course/:courseName', routes.getCourseDetail);
+app.get('/course', routes.getCourseDetail);
 
 app.listen(3015);
 

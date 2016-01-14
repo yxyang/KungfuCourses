@@ -1,1 +1,1 @@
-{"depart": "Chemistry", "name": "Advanced Quantum Mechanics", "prereq": ["Chemistry 120B", "Chemistry 122"], "number": "221A", "units": "3", "descrp": "Introduction, one dimensional problems, matrix mechanics, approximation methods."}
+{"depart": "Chemistry", "name": "Advanced Quantum Mechanics", "prereq": ["Chemistry 120B&122"], "number": "221A", "units": "3", "descrp": "Introduction, one dimensional problems, matrix mechanics, approximation methods."}
