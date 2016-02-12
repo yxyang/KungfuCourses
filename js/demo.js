@@ -224,7 +224,7 @@ drawGrades = function(data) {
 loadMajors = function() {
       $.ajax({
         // url: "http://ec2-52-24-8-168.us-west-2.compute.amazonaws.com/allmajors",
-        url: hostname + "/allmajors",
+        url: hostname + ":3015/allmajors",
         dataType: "jsonp",
         success: function( data ) {
           for (var i in data) {
