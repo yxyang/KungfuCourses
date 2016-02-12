@@ -98,7 +98,7 @@ $(function() {
     var availableTutorials = [];
          $.ajax({
            // url: "http://ec2-52-24-8-168.us-west-2.compute.amazonaws.com:3015/allmajors",
-           url: "http://ec2-54-191-122-19.us-west-2.compute.amazonaws.com/allmajors",
+           url: "http://ec2-54-191-122-19.us-west-2.compute.amazonaws.com:3015/allmajors",
            dataType: "jsonp",
            success: function( data ) {
              for (var i in data) {
