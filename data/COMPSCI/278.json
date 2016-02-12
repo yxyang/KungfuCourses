@@ -1,1 +1,0 @@
-{"depart": "Computer Science", "name": "Machine", "prereq": ["Computer Science 170"], "number": "278", "units": "3", "descrp": "Properties of abstract complexity measures; Determinism vs. nondeterminism; time vs. space; complexity hierarchies; aspects of the P-NP question; relative power of various abstract machines."}
